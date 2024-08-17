@@ -2,13 +2,14 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AccountModule } from './account/account.module';
-import { FirebaseModule } from 'nestjs-firebase'
+import { ConfigModule } from '@nestjs/config'
+import { FirebaseModule } from './firebase/firebase.module';
 
 @Module({
-  imports: [AccountModule,
-    FirebaseModule.forRoot({
-      googleApplicationCredential: "./firebase/config.json",
-    }),
+  imports: [
+    AccountModule, 
+    ConfigModule.forRoot({ cache: true }), 
+    FirebaseModule
   ],
   controllers: [AppController],
   providers: [AppService],

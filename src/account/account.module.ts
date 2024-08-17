@@ -1,7 +1,11 @@
 import { Module } from '@nestjs/common';
 import { AccountController } from './account.controller';
+import { AccountService } from './account.service';
+import { FirebaseModule } from '../firebase/firebase.module'
 
 @Module({
-  controllers: [AccountController]
+  imports: [FirebaseModule],
+  controllers: [AccountController],
+  providers: [AccountService]
 })
 export class AccountModule {}
