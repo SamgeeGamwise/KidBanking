@@ -1,20 +1,7 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
-import { BankingService } from './transaction.service'
+import { Controller } from '@nestjs/common';
+import { TransactionService } from './transaction.service'
 
-@Controller('banking')
+@Controller('transaction')
 export class BankingController {
-    constructor(private bankingService: BankingService) {}
-
-    @Get()
-    async getAll() {
-        const res = await this.bankingService.getTransactions()
-        return res
-    }
-
-
-    @Post()
-    async new(@Body() transaction) {
-        const res = await this.bankingService.addTransaction(transaction)
-        return res
-    }
+    constructor(private transactionService: TransactionService) {}
 }

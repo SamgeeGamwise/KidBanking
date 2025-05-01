@@ -5,7 +5,6 @@ import { accountProviders } from './account.providers'
 import { databaseProviders } from '../database/database.providers'
 
 @Module({
-  imports: [],
   controllers: [AccountController],
   providers: [AccountService, ...accountProviders, ...databaseProviders]
 })
